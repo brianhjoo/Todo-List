@@ -114,6 +114,20 @@ input:focus {
     padding: 2rem 1rem 2rem;
 }
 
+.todo {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin-bottom: 0.3rem;
+    border-left: 0.5rem solid var(--heading-gold);
+    border-bottom: 0.1rem solid black;
+}
+
+.delete:hover {
+    color: #c22545;
+    cursor: pointer;
+}
+
 button {
     margin-top: 1.5rem;
     width: 100%;
