@@ -89,7 +89,7 @@ label {
     letter-spacing: 0.05rem;
 }
 
-input {
+input:not(.todoInput) {
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
@@ -121,6 +121,21 @@ input:focus {
     margin-bottom: 0.3rem;
     border-left: 0.5rem solid var(--heading-gold);
     border-bottom: 0.1rem solid black;
+}
+
+.todoInput {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+}
+
+.edit {
+    margin-right: 0.4rem;
+}
+
+.edit:hover {
+    color: #3390dd;
+    cursor: pointer;
 }
 
 .delete:hover {

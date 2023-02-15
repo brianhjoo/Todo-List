@@ -5,7 +5,13 @@ const search = document.querySelector('#search');
 
 function addTodo(input) {
   const html = `
-    <div class="todo"><span>${input}</span><i class="fa-regular fa-trash-can delete"></i></div>
+    <div class="todo">
+      <input class="todoInput" type="text" readonly="readonly" value="${input}"></input>
+      <div class="icons">
+        <i class="fa-regular fa-pen-to-square edit"></i>
+        <i class="fa-regular fa-trash-can delete"></i>
+      </div>
+    </div>
   `;
   list.innerHTML += html;
 }
@@ -24,6 +30,11 @@ function searchForTodo(input) {
   });
 }
 
+function editTodo(todo) {
+  todo.removeAttribute('readonly');
+  todo.focus();
+}
+
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -37,10 +48,12 @@ form.addEventListener('submit', e => {
 
 list.addEventListener('click', e => {
   if (e.target.classList.contains('delete')) {
-    e.target.parentElement.remove();
+    e.target.parentElement.parentElement.remove();
+  }
+  if (e.target.classList.contains('edit')) {
+    editTodo(e.target.parentElement.previousElementSibling);
   }
 });
-
 
 search.addEventListener('keyup', e => {
   searchForTodo(e.target.value.trim().toLowerCase());
