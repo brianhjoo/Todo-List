@@ -2,14 +2,6 @@ const form = document.querySelector('.form');
 const list = document.querySelector('.list');
 const search = document.querySelector('#search');
 
-{/* <div class="todo">
-  <input class="todoInput" type="text" readonly="readonly" value="${input}"></input>
-  <div class="icons">
-    <i class="fa-regular fa-pen-to-square edit"></i>
-    <i class="fa-regular fa-trash-can delete"></i>
-  </div>
-</div>; */}
-
 function addTodo(input) {
   const todoWrapper = document.createElement('div');
   const todoInput = document.createElement('input');
@@ -55,6 +47,11 @@ function editTodo(todo) {
   todo.focus();
 }
 
+function saveTodo(todo) {
+  todo.setAttribute('value', todo.value);
+  todo.setAttribute('readonly', 'readonly');
+}
+
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -72,6 +69,12 @@ list.addEventListener('click', e => {
   }
   if (e.target.classList.contains('edit')) {
     editTodo(e.target.parentElement.previousElementSibling);
+  }
+});
+
+list.addEventListener('keyup', e => {
+  if (e.keyCode === 13) {
+    saveTodo(e.target);
   }
 });
 
