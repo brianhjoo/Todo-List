@@ -126,16 +126,27 @@ input:focus {
 .todoInput {
     background-color: transparent;
     border: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 0.1rem;
 }
 
+.done {
+    text-decoration: line-through;
+    color: #b8b8b8;
+}
+
+.controls {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
 .edit {
-    margin-right: 0.4rem;
+    margin-right: 0.6rem;
 }
 
 .edit:hover {
-    color: #3390dd;
+    color: #2677b9;
     cursor: pointer;
 }
 
@@ -144,7 +155,7 @@ input:focus {
     cursor: pointer;
 }
 
-button {
+#addTodoBtn {
     margin-top: 1.5rem;
     width: 100%;
     height: 3rem;
@@ -157,15 +168,29 @@ button {
     color: var(--heading-gold);
 }
 
-button:hover {
+#addTodoBtn:hover {
     border: 0.13rem solid var(--heading-gold);
     color: #222;
 }
 
-button:active {
+#addTodoBtn:active {
     background-color: #ebebeb;
     color: #000;
     border-color: #d89e00;
+}
+
+.doneButton {
+    margin-right: 0.6rem;
+    margin-top: 0.15rem;
+    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.doneButton:hover {
+    cursor: pointer;
+    color: #269c26;
 }
 
 .filtered {

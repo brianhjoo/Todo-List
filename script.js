@@ -5,7 +5,8 @@ const search = document.querySelector('#search');
 function addTodo(input) {
   const todoWrapper = document.createElement('div');
   const todoInput = document.createElement('input');
-  const iconWrapper = document.createElement('div');
+  const controlsWrapper = document.createElement('div');
+  const doneButton = document.createElement('span');
   const editIcon = document.createElement('i');
   const deleteIcon = document.createElement('i');
 
@@ -17,12 +18,14 @@ function addTodo(input) {
   todoInput.setAttribute('readonly', 'readonly');
   todoInput.setAttribute('value', input);
 
-  iconWrapper.classList.add('icons');
+  controlsWrapper.classList.add('controls');
+  doneButton.classList.add('doneButton');
+  doneButton.innerText = 'done';
   editIcon.classList.add('fa-regular', 'fa-pen-to-square', 'edit');
   deleteIcon.classList.add('fa-regular', 'fa-trash-can', 'delete');
 
-  iconWrapper.append(editIcon, deleteIcon);
-  todoWrapper.append(todoInput, iconWrapper);
+  controlsWrapper.append(doneButton, editIcon, deleteIcon);
+  todoWrapper.append(todoInput, controlsWrapper);
   list.append(todoWrapper);
 }
 
@@ -69,6 +72,16 @@ list.addEventListener('click', e => {
   }
   if (e.target.classList.contains('edit')) {
     editTodo(e.target.parentElement.previousElementSibling);
+  }
+  if (e.target.tagName === 'SPAN') {
+    const allTodos = list.querySelectorAll('.todo');
+    const todo = e.target.parentElement.previousElementSibling;
+    const todoContainer = e.target.parentElement.parentElement;
+    todo.classList.toggle('done');
+    if (allTodos.length > 1) {
+      todoContainer.remove();
+      list.append(todoContainer);
+    }
   }
 });
 
